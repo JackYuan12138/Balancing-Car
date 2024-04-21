@@ -22,5 +22,7 @@ uint32_t getCCR(TIM_TypeDef* TIMx, unsigned int channel);
 void setCCR(TIM_TypeDef* TIMx, unsigned int channel, uint32_t CCR);
 void HAL_TIM_PWM_MspDeInit(TIM_HandleTypeDef* tim_pwmHandle);
 void HAL_TIM_PWM_MspInit(TIM_HandleTypeDef* htim);
+void HAL_TIM_Encoder_MspDeInit(TIM_HandleTypeDef* tim_encoderHandle);
+void HAL_TIM_Encoder_MspInit(TIM_HandleTypeDef* tim_encoderHandle);
 
 #endif /* __MOTOR_H */

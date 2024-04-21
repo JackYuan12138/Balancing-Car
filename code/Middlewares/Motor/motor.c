@@ -146,3 +146,37 @@ void HAL_TIM_PWM_MspInit(TIM_HandleTypeDef* htim)
 	#endif
 	/* MOTOR_B_END */
 }
+
+void HAL_TIM_Encoder_MspDeInit(TIM_HandleTypeDef* tim_encoderHandle)
+{
+	if (tim_encoderHandle->Instance == TIM1)
+	{
+		__HAL_RCC_TIM1_CLK_DISABLE();
+	}else if (tim_encoderHandle->Instance == TIM2)
+	{
+		__HAL_RCC_TIM2_CLK_DISABLE();
+	}else if (tim_encoderHandle->Instance == TIM3)
+	{
+		__HAL_RCC_TIM3_CLK_DISABLE();
+	} else if (tim_encoderHandle->Instance == TIM4)
+	{
+		__HAL_RCC_TIM4_CLK_DISABLE();
+	}
+}
+
+void HAL_TIM_Encoder_MspInit(TIM_HandleTypeDef* tim_encoderHandle)
+{
+	if (tim_encoderHandle->Instance == TIM1)
+	{
+		__HAL_RCC_TIM1_CLK_ENABLE();
+	}else if (tim_encoderHandle->Instance == TIM2)
+	{
+		__HAL_RCC_TIM2_CLK_ENABLE();
+	}else if (tim_encoderHandle->Instance == TIM3)
+	{
+		__HAL_RCC_TIM3_CLK_ENABLE();
+	} else if (tim_encoderHandle->Instance == TIM4)
+	{
+		__HAL_RCC_TIM4_CLK_ENABLE();
+	}
+}

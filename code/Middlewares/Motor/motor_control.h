@@ -34,6 +34,7 @@ typedef struct
 extern pid_arg PID;
 
 void Motor_init(void);
+void Encoder_Init(void);
 void Motor_setSpeed(uint8_t motorX, int16_t speed);
 int16_t Motor_getSpeed(uint8_t EncoderX);
 uint32_t Motor_verticalRingPD(float Angle, float Gyro);

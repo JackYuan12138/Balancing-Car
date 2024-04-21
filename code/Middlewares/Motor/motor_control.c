@@ -81,6 +81,53 @@ void Motor_init(void)
 }
 
 /**
+ * @brief 编码器初始化
+ */
+void Encoder_Init(void)
+{
+	TIM_HandleTypeDef htim;
+	TIM_Encoder_InitTypeDef sConfig = { 0 };
+	TIM_MasterConfigTypeDef sMasterConfig = { 0 };
+
+	htim.Init.Prescaler = 0;
+	htim.Init.CounterMode = TIM_COUNTERMODE_UP;
+	htim.Init.Period = 65535;
+	htim.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+	htim.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+	sConfig.EncoderMode = TIM_ENCODERMODE_TI12;
+	sConfig.IC1Polarity = TIM_ICPOLARITY_RISING;
+	sConfig.IC1Selection = TIM_ICSELECTION_DIRECTTI;
+	sConfig.IC1Prescaler = TIM_ICPSC_DIV1;
+	sConfig.IC1Filter = 0;
+	sConfig.IC2Polarity = TIM_ICPOLARITY_RISING;
+	sConfig.IC2Selection = TIM_ICSELECTION_DIRECTTI;
+	sConfig.IC2Prescaler = TIM_ICPSC_DIV1;
+	sConfig.IC2Filter = 0;
+	sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+	sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+	htim.Instance = MOTOR_A_ENCODER_TIM;
+	if (HAL_TIM_Encoder_Init(&htim, &sConfig) != HAL_OK) {
+		Error_Handler("MOTOR_A_ENCODER_Init");
+	}
+	if (HAL_TIMEx_MasterConfigSynchronization(&htim, &sMasterConfig) != HAL_OK) {
+		Error_Handler("MOTOR_A_ENCODER_MasterConfig");
+	}
+	if(HAL_TIM_Encoder_Start(&htim, TIM_CHANNEL_ALL) != HAL_OK) {
+		Error_Handler("MOTOR_A_ENCODER_Start");
+	}
+	htim.Instance = MOTOR_B_ENCODER_TIM;
+	if (HAL_TIM_Encoder_Init(&htim, &sConfig) != HAL_OK) {
+		Error_Handler("MOTOR_B_ENCODER_Init");
+	}
+	if (HAL_TIMEx_MasterConfigSynchronization(&htim, &sMasterConfig) != HAL_OK) {
+		Error_Handler("MOTOR_B_ENCODER_MasterConfig");
+	}
+	if(HAL_TIM_Encoder_Start(&htim, TIM_CHANNEL_ALL) != HAL_OK) {
+		Error_Handler("MOTOR_B_ENCODER_Start");
+	}
+}
+
+/**
  * @brief 设置电机速度
  * @param motorX 电机编号(1：电机A；2：电机B)
  * @param speed 速度值(-100~100)
