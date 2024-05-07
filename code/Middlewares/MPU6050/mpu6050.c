@@ -68,7 +68,7 @@ uint8_t MPU_Init(void)
     MPU_Set_Rate(50);						//设置采样率50Hz
     MPU_Write_Byte(MPU_INT_EN_REG, 0X00);	//关闭所有中断
     MPU_Write_Byte(MPU_USER_CTRL_REG, 0X00);	//I2C主模式关闭
-    MPU_Write_Byte(MPU_FIFO_EN_REG, 0X00);	//关闭FIFO
+    MPU_Write_Byte(MPU_FIFO_EN_REG, 0X01);	//开启FIFO
     MPU_Write_Byte(MPU_INTBP_CFG_REG, 0X80);	//INT引脚低电平有效
     res = MPU_Read_Byte(MPU_DEVICE_ID_REG);
     if (res == MPU_ADDR)//器件ID正确

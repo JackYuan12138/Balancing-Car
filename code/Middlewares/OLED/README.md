@@ -8,13 +8,13 @@ author: Alex
 | 文件 | 功能 |
 | --- | --- |
 | OLED.h | 头文件 |
-| OLED_Config.h | 配置文件 |
+| OLED_config.h | 配置文件 |
 
 ## 使用方法
 
 ### IIC通信配置
 
-在`OLED_Config.h`中配置好数据线(SDA)和时钟线(SCL)的引脚。
+在`OLED_config.h`中配置好数据线(SDA)和时钟线(SCL)的引脚。
 
 ### 常用功能
 
