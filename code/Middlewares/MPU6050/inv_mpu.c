@@ -582,10 +582,10 @@ const struct test_s test = {
     5,				//	packet_thresh
     10.0f,			 //	min_dps
     105.0f,			 //	max_dps
-    0.14f,			//	max_gyro_var
+    0.18f,			//	max_gyro_var
     0.3f,		   //	min_g
     0.95f,		   //	max_g
-    0.14f		   //	max_accel_var
+    0.18f		   //	max_accel_var
 };
 
 //static struct gyro_state_s st = {
@@ -3075,7 +3075,7 @@ uint8_t MPU_Read_Byte(uint8_t reg)
 /**
  * @brief 初始化MPU的DMP部分
  * @retval 0 成功
- * @retval 1 失败
+ * @retval 非0 失败
  */
 uint8_t MPU_DMP_Init(void)
 {

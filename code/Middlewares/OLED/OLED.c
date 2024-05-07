@@ -268,7 +268,7 @@ void OLED_showBinNum(uint8_t Line, uint8_t Column, uint32_t Number, uint8_t Leng
 /**
  * @brief OLED初始化
  */
-void OLED_Init()
+void OLED_init()
 {
     uint32_t i, j;
 

@@ -25,6 +25,10 @@
 /*控制电机A的PWM对应时钟资源*/
 #define MOTOR_A_PWM_TIM 			TIM2
 #define MOTOR_A_PWM_TIM_CCR_CHANNEL TIM_CHANNEL_3
+/*电机A编码器端口*/
+#define MOTOR_AENCODER_Port 		GPIOA
+#define MOTOR_AENCODER_Pin1 		GPIO_PIN_0
+#define MOTOR_AENCODER_Pin2 		GPIO_PIN_1
 /*控制电机A编码器对应时钟资源*/
 #define MOTOR_A_ENCODER_TIM 		TIM1
 
@@ -42,6 +46,10 @@
 /*控制电机B的PWM对应时钟资源*/
 #define MOTOR_B_PWM_TIM 			TIM3
 #define MOTOR_B_PWM_TIM_CCR_CHANNEL TIM_CHANNEL_4
+/*电机B编码器端口*/
+#define MOTOR_BENCODER_Port 		GPIOB
+#define MOTOR_BENCODER_Pin1 		GPIO_PIN_6
+#define MOTOR_BENCODER_Pin2 		GPIO_PIN_7
 /*控制电机B编码器对应时钟资源*/
 #define MOTOR_B_ENCODER_TIM 		TIM4
 

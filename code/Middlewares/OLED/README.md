@@ -20,7 +20,7 @@ author: Alex
 
 | 函数 | 功能 |
 | --- | --- |
-| OLED_Init() | OLED初始化 |
+| OLED_init() | OLED初始化 |
 | OLED_clear() | 清屏 |
 | OLED_showString() | 显示字符串 |
 | OLED_showNum() | 显示数字 |

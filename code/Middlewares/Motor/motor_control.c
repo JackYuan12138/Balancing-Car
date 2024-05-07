@@ -88,6 +88,7 @@ void Encoder_Init(void)
 	TIM_HandleTypeDef htim;
 	TIM_Encoder_InitTypeDef sConfig = { 0 };
 	TIM_MasterConfigTypeDef sMasterConfig = { 0 };
+	GPIO_InitTypeDef GPIO_InitStructure;
 
 	htim.Init.Prescaler = 0;
 	htim.Init.CounterMode = TIM_COUNTERMODE_UP;
@@ -105,6 +106,17 @@ void Encoder_Init(void)
 	sConfig.IC2Filter = 0;
 	sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
 	sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+	/* MOTOR_A_START */
+	#if MOTOR_A
+	GPIO_InitStruct.Pin = MOTOR_AENCODER_Pin1 | MOTOR_AENCODER_Pin2;
+	if (MOTOR_AENCODER_Port == GPIOA) {
+		__HAL_RCC_GPIOA_CLK_ENABLE();
+	} else if (MOTOR_AENCODER_Port == GPIOB) {
+		__HAL_RCC_GPIOB_CLK_ENABLE();
+	}
+	HAL_GPIO_Init(MOTOR_AENCODER_Port, &GPIO_InitStructure);
 	htim.Instance = MOTOR_A_ENCODER_TIM;
 	if (HAL_TIM_Encoder_Init(&htim, &sConfig) != HAL_OK) {
 		Error_Handler("MOTOR_A_ENCODER_Init");
@@ -115,6 +127,17 @@ void Encoder_Init(void)
 	if(HAL_TIM_Encoder_Start(&htim, TIM_CHANNEL_ALL) != HAL_OK) {
 		Error_Handler("MOTOR_A_ENCODER_Start");
 	}
+	#endif
+	/* MOTOR_A_END */
+	/* MOTOR_B_START */
+	#if MOTOR_B
+	GPIO_InitStruct.Pin = MOTOR_BENCODER_Pin1 | MOTOR_BENCODER_Pin2;
+	if (MOTOR_BENCODER_Port == GPIOA) {
+		__HAL_RCC_GPIOA_CLK_ENABLE();
+	} else if (MOTOR_BENCODER_Port == GPIOB) {
+		__HAL_RCC_GPIOB_CLK_ENABLE();
+	}
+	HAL_GPIO_Init(MOTOR_BENCODER_Port, &GPIO_InitStructure);
 	htim.Instance = MOTOR_B_ENCODER_TIM;
 	if (HAL_TIM_Encoder_Init(&htim, &sConfig) != HAL_OK) {
 		Error_Handler("MOTOR_B_ENCODER_Init");
@@ -125,6 +148,7 @@ void Encoder_Init(void)
 	if(HAL_TIM_Encoder_Start(&htim, TIM_CHANNEL_ALL) != HAL_OK) {
 		Error_Handler("MOTOR_B_ENCODER_Start");
 	}
+	#endif
 }
 
 /**

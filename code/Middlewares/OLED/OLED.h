@@ -23,13 +23,13 @@ extern "C"
 #include "stm32f103xb.h"
 #include "stm32f1xx_hal_gpio.h"
 #include "stm32f1xx_hal_rcc.h"
-#include "OLED_Config.h"
-#include "OLED_Libraries.h"
+#include "OLED_config.h"
+#include "OLED_libraries.h"
 
 /* ------------------------------------------------------------------- */
 /* Functions
  * ------------------------------------------------------------------- */
-void OLED_Init(void);
+void OLED_init(void);
 void OLED_clear(void);
 void OLED_showChar(uint8_t Line, uint8_t Column, char Char);
 void OLED_showString(uint8_t Line, uint8_t Column, char* String);
