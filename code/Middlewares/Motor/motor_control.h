@@ -12,6 +12,7 @@
 #define __MOTOR_CONTROL_H
 
 #include "motor.h"
+#include "main.h"
 
 /*PID参数结构体*/
 typedef struct

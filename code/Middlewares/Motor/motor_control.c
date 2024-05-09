@@ -106,11 +106,11 @@ void Encoder_Init(void)
 	sConfig.IC2Filter = 0;
 	sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
 	sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStructure.Mode = GPIO_MODE_INPUT;
+    GPIO_InitStructure.Pull = GPIO_NOPULL;
 	/* MOTOR_A_START */
 	#if MOTOR_A
-	GPIO_InitStruct.Pin = MOTOR_AENCODER_Pin1 | MOTOR_AENCODER_Pin2;
+	GPIO_InitStructure.Pin = MOTOR_AENCODER_Pin1 | MOTOR_AENCODER_Pin2;
 	if (MOTOR_AENCODER_Port == GPIOA) {
 		__HAL_RCC_GPIOA_CLK_ENABLE();
 	} else if (MOTOR_AENCODER_Port == GPIOB) {
@@ -131,7 +131,7 @@ void Encoder_Init(void)
 	/* MOTOR_A_END */
 	/* MOTOR_B_START */
 	#if MOTOR_B
-	GPIO_InitStruct.Pin = MOTOR_BENCODER_Pin1 | MOTOR_BENCODER_Pin2;
+	GPIO_InitStructure.Pin = MOTOR_BENCODER_Pin1 | MOTOR_BENCODER_Pin2;
 	if (MOTOR_BENCODER_Port == GPIOA) {
 		__HAL_RCC_GPIOA_CLK_ENABLE();
 	} else if (MOTOR_BENCODER_Port == GPIOB) {

@@ -11,7 +11,7 @@
 #define __MOTOR_CONFIG_H
 
 #define 	MOTOR_A 		1 //是否使用电机A
-#define 	MOTOR_B 		1 //是否使用电机B
+#define 	MOTOR_B 		2 //是否使用电机B
 
 #if MOTOR_A
 
